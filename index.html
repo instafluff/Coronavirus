@@ -25,11 +25,12 @@
       }
     </style>
 
-    <title>nCoV - New Coronavirus  Tracker</title>
+    <title>nCoV - New Coronavirus Tracker</title>
   </head>
   <body>
       <div class="container">
-          <h1>nCoV - New Coronavirus  Tracker</h1>
+          <h1>nCoV - Coronavirus Tracker by <a href="https://www.instafluff.tv">Instafluff</a></h1>
+          <h6>Based on real-time data from <a href="https://systems.jhu.edu/research/public-health/ncov/">Johns Hopkins CSSE</a> <span id="updated"></span></h6>
 
           <table class="table table-striped table-bordered table-sm">
             <thead class="thead-dark">
@@ -59,12 +60,13 @@
             if( r ) {
                 let data = r.features.map( x => x.attributes ).map( x => ({
                     date: x.Report_Date,
-                    formattedDate: moment( x.Report_Date ).format( "MMMM Do YYYY" ),
+                    formattedDate: moment( x.Report_Date ).format( "ll" ),
                     china: x.Mainland_China,
                     other: x.Other_Locations,
                     total: x.Total_Confirmed
                 }));
                 console.log( data );
+                $( "#updated" ).text( `(Updated ${data[ data.length - 1 ].formattedDate})` );
                 // data.pop();
                 data.forEach( (x,i) => {
                     let prevChina = ( i > 0 ? data[ i - 1 ].china : x.china );
