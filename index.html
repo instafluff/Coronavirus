@@ -126,7 +126,7 @@
             if( r ) {
                 let data = r.features.map( x => x.attributes ).filter( x => x.Country_Region !== "Mainland China" ).map( x => ({
                     date: x.Last_Update,
-                    formattedDate: moment( x.Last_Update ).format( "lll" ),
+                    formattedDate: moment( x.Last_Update + 18000000 ).format( "lll" ),
                     state: x.Province_State || "",
                     country: x.Country_Region || "",
                     cases: x.Confirmed || 0,
@@ -157,7 +157,7 @@
             if( r ) {
                 let data = r.features.map( x => x.attributes ).filter( x => x.Country_Region === "Mainland China" ).map( x => ({
                     date: x.Last_Update,
-                    formattedDate: moment( x.Last_Update ).format( "lll" ),
+                    formattedDate: moment( x.Last_Update + 18000000 ).format( "lll" ),
                     province: x.Province_State || "",
                     country: x.Country_Region || "",
                     cases: x.Confirmed || 0,
