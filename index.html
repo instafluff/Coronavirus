@@ -124,7 +124,7 @@
         .then( r => r.json() )
         .then( r => {
             if( r ) {
-                let data = r.features.map( x => x.attributes ).filter( x => x.Country_Region !== "Mainland China" || x.Country_Region !== "China" ).map( x => ({
+                let data = r.features.map( x => x.attributes ).filter( x => x.Country_Region !== "Mainland China" && x.Country_Region !== "China" ).map( x => ({
                     date: x.Last_Update,
                     formattedDate: moment( x.Last_Update + 18000000 ).format( "lll" ),
                     state: x.Province_State || "",
