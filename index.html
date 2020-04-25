@@ -106,7 +106,7 @@
                     let prevOther = ( i > 0 ? data[ i - 1 ].other : x.other );
                     let prevTotal = ( i > 0 ? data[ i - 1 ].total : x.total );
                     if( x.total ) {
-                        $( "#quickview tr:last" ).after( `
+                        $( "#quickview tbody" ).append( `
                           <tr>
                             <th scope="row">${x.formattedDate}</th>
                             <td class="table-${getSeverity( ( x.china - prevChina ) / prevChina )}">${x.china} <small>(+${ ( ( x.china - prevChina ) / prevChina * 100 ).toFixed( 2 ) }%)</small></td>
@@ -137,7 +137,7 @@
                 // data.pop();
                 let maxCases = Math.max( ...data.map( x => x.cases ) );
                 data.forEach( (x,i) => {
-                    $( "#breakdown tr:last" ).after( `
+                    $( "#breakdown tbody" ).append( `
                       <tr>
                         <td><small>${x.state}</small></td>
                         <td>${x.country}</td>
@@ -170,7 +170,7 @@
                 let maxCases = Math.max( ...data.filter( x => x.province !== "Hubei" ).map( x => x.cases ) );
                 console.log( maxCases );
                 data.forEach( (x,i) => {
-                    $( "#breakdown-china tr:last" ).after( `
+                    $( "#breakdown-china tbody" ).append( `
                       <tr>
                         <td class="table-${x.province === "Hubei" ? "secondary" : "default"}">${x.province}</td>
                         <td class="table-${getSeverity( x.cases / maxCases )}">${x.cases}</td>
